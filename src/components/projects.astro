@@ -1,0 +1,158 @@
+---
+const projects = ["01", "02", "03", "04"];
+---
+
+<section
+  id="projects"
+  class="py-12 border-t border-[#ffffff10] text-[var(--white)]"
+>
+  <div class="max-w-5xl mx-auto">
+    <p class="text-lg text-[var(--sec)] mb-2 shiny-sec">A work in progress</p>
+    <h2 class="text-4xl md:text-5xl font-medium mb-8">Projects</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {
+        projects.map((number) => (
+          <article class="project-card group">
+            <div class={`project-art project-art-${number}`} aria-hidden="true">
+              <div class="project-art-grid" />
+              <div class="project-art-orbit" />
+              <span>{number}</span>
+            </div>
+            <div class="flex items-center gap-4 px-3 pt-4">
+              <div class="flex-grow">
+                <h3 class="text-xl md:text-2xl font-semibold">
+                  Project {number}
+                </h3>
+                <p class="py-1 text-sm text-[var(--white-icon)]">
+                  Details coming soon
+                </p>
+              </div>
+              <span class="project-status" aria-label="Project details coming soon">
+                <span aria-hidden="true">↗</span>
+              </span>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <p class="mt-8 text-center text-sm text-[var(--white-icon)]">
+      Project details and links will be added here.
+    </p>
+  </div>
+</section>
+
+<style>
+  .project-card {
+    min-width: 0;
+  }
+
+  .project-art {
+    position: relative;
+    display: grid;
+    aspect-ratio: 1.6;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid #ffffff12;
+    border-radius: 16px;
+    background:
+      radial-gradient(ellipse at 50% 45%, #7446a644, transparent 58%),
+      linear-gradient(145deg, #1d1b22, #111112 70%);
+    transition:
+      border-color 240ms ease,
+      transform 240ms ease;
+  }
+
+  .project-card:hover .project-art {
+    transform: translateY(-3px);
+    border-color: #a476ff66;
+  }
+
+  .project-art-grid {
+    position: absolute;
+    background-image:
+      linear-gradient(#ffffff0a 1px, transparent 1px),
+      linear-gradient(90deg, #ffffff0a 1px, transparent 1px);
+    background-size: 28px 28px;
+    inset: 0;
+    mask-image: radial-gradient(ellipse, #000 5%, transparent 75%);
+  }
+
+  .project-art-orbit {
+    position: absolute;
+    width: 54%;
+    height: 76%;
+    border: 1px solid #c59aff44;
+    border-radius: 50%;
+    box-shadow: 0 0 50px #a476ff20;
+    transform: rotate(-34deg);
+    transition: transform 400ms ease;
+  }
+
+  .project-card:hover .project-art-orbit {
+    transform: rotate(-18deg) scale(1.1);
+  }
+
+  .project-art > span {
+    position: relative;
+    color: #e2ccff;
+    font-family: "Montserrat Variable", sans-serif;
+    font-size: clamp(52px, 8vw, 84px);
+    font-weight: 500;
+    letter-spacing: -0.08em;
+    opacity: 0.78;
+    text-shadow: 0 0 35px #a476ff77;
+  }
+
+  .project-art-02 {
+    background:
+      radial-gradient(ellipse at 68% 38%, #37589555, transparent 58%),
+      linear-gradient(145deg, #171d28, #111112 70%);
+  }
+
+  .project-art-02 .project-art-orbit {
+    border-color: #87adf655;
+    transform: rotate(38deg);
+  }
+
+  .project-art-03 {
+    background:
+      radial-gradient(ellipse at 35% 60%, #75426855, transparent 58%),
+      linear-gradient(145deg, #251a25, #111112 70%);
+  }
+
+  .project-art-03 .project-art-orbit {
+    border-color: #e2a0d055;
+    transform: rotate(16deg);
+  }
+
+  .project-art-04 {
+    background:
+      radial-gradient(ellipse at 55% 48%, #4c704755, transparent 58%),
+      linear-gradient(145deg, #1b241f, #111112 70%);
+  }
+
+  .project-art-04 .project-art-orbit {
+    border-color: #a6d49c55;
+    transform: rotate(-52deg);
+  }
+
+  .project-status {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1px solid #ffffff1a;
+    border-radius: 12px;
+    color: var(--white-icon);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .project-art,
+    .project-art-orbit {
+      transition: none;
+    }
+  }
+</style>

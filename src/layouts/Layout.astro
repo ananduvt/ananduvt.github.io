@@ -1,0 +1,129 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title}</title>
+    <meta
+      name="description"
+      content="Anandu V T's personal website."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="canonical" href="https://ananduvt.github.io/" />
+
+    <link
+      rel="preload"
+      href="/fonts/montserrat-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+
+    <meta
+      property="og:title"
+      content="Anandu V T"
+    />
+    <meta
+      property="og:description"
+      content="Anandu V T's personal website."
+    />
+    <meta property="og:url" content="https://ananduvt.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:site_name"
+      content="Anandu V T"
+    />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Anandu V T",
+        "url": "https://ananduvt.github.io/",
+        "sameAs": ["https://github.com/ananduvt"],
+        "description": "Anandu V T's personal website."
+      }
+    </script>
+  </head>
+  <body class="bg-[--background] px-5 sm:px-8 lg:px-12">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @font-face {
+    font-family: "Montserrat Variable";
+    src: url("/fonts/montserrat-latin-wght-normal.woff2")
+      format("woff2-variations");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  :root {
+    --background: #101010;
+    --sec: #a476ff;
+    --white: #dfdfdf;
+    --white-icon: #f3f3f398;
+    --white-icon-tr: #f3f3f310;
+    --component-bg: #171717f2;
+    --container: #141414;
+    --line: #ffffff10;
+    --pink: #a476ff;
+  }
+
+  * {
+    font-family:
+      "Montserrat Variable",
+      -apple-system,
+      system-ui,
+      sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  *::selection {
+    background-color: var(--sec);
+    color: var(--background);
+  }
+
+  /* Scrollbar styles */
+
+  ::-webkit-scrollbar {
+    width: 15px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--container);
+    border-radius: 30px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--background);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--pink);
+  }
+
+  /* Scrollbar styles for Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--line) var(--container);
+  }
+</style>
