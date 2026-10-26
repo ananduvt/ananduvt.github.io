@@ -1,0 +1,14 @@
+# Anandu V T
+
+Personal website for Anandu V T, published at https://ananduvt.github.io/.
+
+## Sections
+
+- Home: a brief introduction.
+- Projects: project updates as they become available.
+- Contact: links to Anandu's GitHub profile at https://github.com/ananduvt.
+
+## Site
+
+Built with Astro, React, and Tailwind CSS. The design is based on Dark minimal
+by Oscar Hernandez: https://github.com/Gothsec/dark-minimal.
