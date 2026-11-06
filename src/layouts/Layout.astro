@@ -4,6 +4,7 @@ interface Props {
 }
 
 const { title } = Astro.props;
+const pageUrl = new URL(Astro.url.pathname, "https://ananduvt.github.io").toString();
 ---
 
 <!doctype html>
@@ -17,7 +18,7 @@ const { title } = Astro.props;
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="canonical" href="https://ananduvt.github.io/" />
+    <link rel="canonical" href={pageUrl} />
 
     <link
       rel="preload"
@@ -35,7 +36,7 @@ const { title } = Astro.props;
       property="og:description"
       content="Anandu V T's personal website."
     />
-    <meta property="og:url" content="https://ananduvt.github.io/" />
+    <meta property="og:url" content={pageUrl} />
     <meta property="og:type" content="website" />
     <meta
       property="og:site_name"
@@ -54,7 +55,7 @@ const { title } = Astro.props;
       }
     </script>
   </head>
-  <body class="bg-[--background] px-5 sm:px-8 lg:px-12">
+  <body class="bg-[--background]">
     <slot />
   </body>
 </html>
@@ -71,14 +72,18 @@ const { title } = Astro.props;
 
   :root {
     --background: #101010;
-    --sec: #a476ff;
+    --accent-purple: #884cff;
+    --accent-purple-rgb: 136 76 255;
+    --accent-amber: #dd7010;
+    --accent-amber-rgb: 221 112 16;
+    --sec: var(--accent-purple);
     --white: #dfdfdf;
     --white-icon: #f3f3f398;
     --white-icon-tr: #f3f3f310;
     --component-bg: #171717f2;
     --container: #141414;
     --line: #ffffff10;
-    --pink: #a476ff;
+    --pink: var(--accent-purple);
   }
 
   * {

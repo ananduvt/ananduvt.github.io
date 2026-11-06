@@ -1,158 +1,240 @@
 ---
-const projects = ["01", "02", "03", "04"];
 ---
 
-<section
-  id="projects"
-  class="py-12 border-t border-[#ffffff10] text-[var(--white)]"
->
-  <div class="max-w-5xl mx-auto">
-    <p class="text-lg text-[var(--sec)] mb-2 shiny-sec">A work in progress</p>
-    <h2 class="text-4xl md:text-5xl font-medium mb-8">Projects</h2>
+<section id="work" class="min-h-[100svh] flex items-center py-12 border-t border-[#ffffff10] text-[var(--white)]">
+  <div class="work-content max-w-7xl w-full mx-auto px-6">
+    <div class="work-preview">
+      <div class="work-art" aria-hidden="true">
+        <svg viewBox="0 0 480 360" role="presentation">
+          <path class="network-line" d="M92 88 196 148M388 82 284 148M92 272 196 212M388 278 284 212" />
+          <path class="network-line network-line-secondary" d="M92 88 92 272M388 82 388 278M92 180H162M318 180h70" />
+          <path class="network-flow" d="M92 88 196 148M388 82 284 148M92 272 196 212M388 278 284 212" />
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {
-        projects.map((number) => (
-          <article class="project-card group">
-            <div class={`project-art project-art-${number}`} aria-hidden="true">
-              <div class="project-art-grid" />
-              <div class="project-art-orbit" />
-              <span>{number}</span>
-            </div>
-            <div class="flex items-center gap-4 px-3 pt-4">
-              <div class="flex-grow">
-                <h3 class="text-xl md:text-2xl font-semibold">
-                  Project {number}
-                </h3>
-                <p class="py-1 text-sm text-[var(--white-icon)]">
-                  Details coming soon
-                </p>
-              </div>
-              <span class="project-status" aria-label="Project details coming soon">
-                <span aria-hidden="true">↗</span>
-              </span>
-            </div>
-          </article>
-        ))
-      }
+          <rect class="service-node" x="30" y="58" width="124" height="60" rx="12" />
+          <text class="service-label" x="92" y="94" text-anchor="middle">API</text>
+          <rect class="service-node" x="326" y="52" width="124" height="60" rx="12" />
+          <text class="service-label" x="388" y="88" text-anchor="middle">WORKER</text>
+          <rect class="service-node" x="30" y="242" width="124" height="60" rx="12" />
+          <text class="service-label" x="92" y="278" text-anchor="middle">QUEUE</text>
+          <rect class="service-node" x="326" y="248" width="124" height="60" rx="12" />
+          <text class="service-label" x="388" y="284" text-anchor="middle">DATA</text>
+
+          <circle class="hub-glow" cx="240" cy="180" r="67" />
+          <circle class="hub-ring" cx="240" cy="180" r="53" />
+          <circle class="hub-core" cx="240" cy="180" r="34" />
+          <text class="hub-mark" x="240" y="186" text-anchor="middle">&lt;/&gt;</text>
+
+          <circle class="network-point" cx="92" cy="88" r="4" />
+          <circle class="network-point network-point-delay" cx="388" cy="82" r="4" />
+          <circle class="network-point network-point-delay" cx="92" cy="272" r="4" />
+          <circle class="network-point" cx="388" cy="278" r="4" />
+        </svg>
+      </div>
+
+      <div class="work-copy">
+        <p class="text-lg text-[var(--sec)] mb-2 shiny-sec">The work side</p>
+        <h2 class="work-title">Lead Back End Engineer</h2>
+        <p class="max-w-2xl text-[var(--white-icon)] leading-relaxed">
+          Engineering, software, and creative problem-solving. Here’s a quick
+          look at some of the tools I use.
+        </p>
+        <a class="section-link" href="/work/">
+          Explore my work <span aria-hidden="true">↗</span>
+        </a>
+      </div>
     </div>
-
-    <p class="mt-8 text-center text-sm text-[var(--white-icon)]">
-      Project details and links will be added here.
-    </p>
   </div>
 </section>
 
 <style>
-  .project-card {
-    min-width: 0;
+  .work-preview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: clamp(32px, 6vw, 80px);
   }
 
-  .project-art {
+  .work-art {
+    order: 2;
     position: relative;
     display: grid;
-    aspect-ratio: 1.6;
+    min-width: 0;
+    aspect-ratio: 1.2;
     place-items: center;
     overflow: hidden;
     border: 1px solid #ffffff12;
-    border-radius: 16px;
+    border-radius: 20px;
     background:
-      radial-gradient(ellipse at 50% 45%, #7446a644, transparent 58%),
-      linear-gradient(145deg, #1d1b22, #111112 70%);
-    transition:
-      border-color 240ms ease,
-      transform 240ms ease;
+      radial-gradient(ellipse at 50% 50%, rgb(var(--accent-purple-rgb) / 0.07), transparent 52%),
+      linear-gradient(145deg, #171619, #111112 70%);
   }
 
-  .project-card:hover .project-art {
-    transform: translateY(-3px);
-    border-color: #a476ff66;
-  }
-
-  .project-art-grid {
+  .work-art::before {
     position: absolute;
+    content: "";
     background-image:
-      linear-gradient(#ffffff0a 1px, transparent 1px),
-      linear-gradient(90deg, #ffffff0a 1px, transparent 1px);
-    background-size: 28px 28px;
+      linear-gradient(#ffffff08 1px, transparent 1px),
+      linear-gradient(90deg, #ffffff08 1px, transparent 1px);
+    background-size: 32px 32px;
     inset: 0;
-    mask-image: radial-gradient(ellipse, #000 5%, transparent 75%);
+    mask-image: radial-gradient(ellipse at center, #000 15%, transparent 78%);
   }
 
-  .project-art-orbit {
-    position: absolute;
-    width: 54%;
-    height: 76%;
-    border: 1px solid #c59aff44;
-    border-radius: 50%;
-    box-shadow: 0 0 50px #a476ff20;
-    transform: rotate(-34deg);
-    transition: transform 400ms ease;
-  }
-
-  .project-card:hover .project-art-orbit {
-    transform: rotate(-18deg) scale(1.1);
-  }
-
-  .project-art > span {
+  .work-art svg {
     position: relative;
-    color: #e2ccff;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .network-line {
+    fill: none;
+    stroke: rgb(var(--accent-purple-rgb) / 0.33);
+    stroke-width: 1.5;
+  }
+
+  .network-line-secondary {
+    stroke: #dfdfdf22;
+    stroke-dasharray: 3 8;
+  }
+
+  .network-flow {
+    fill: none;
+    stroke: var(--accent-purple);
+    stroke-dasharray: 2 24;
+    stroke-linecap: round;
+    stroke-width: 2;
+    animation: network-flow 16s linear infinite;
+  }
+
+  .service-node {
+    fill: #17151d;
+    stroke: rgb(var(--accent-purple-rgb) / 0.29);
+    stroke-width: 1;
+  }
+
+  .service-label {
+    fill: #dfdfdf99;
     font-family: "Montserrat Variable", sans-serif;
-    font-size: clamp(52px, 8vw, 84px);
+    font-size: 12px;
     font-weight: 500;
-    letter-spacing: -0.08em;
-    opacity: 0.78;
-    text-shadow: 0 0 35px #a476ff77;
+    letter-spacing: 1.8px;
   }
 
-  .project-art-02 {
-    background:
-      radial-gradient(ellipse at 68% 38%, #37589555, transparent 58%),
-      linear-gradient(145deg, #171d28, #111112 70%);
+  .hub-glow {
+    fill: rgb(var(--accent-purple-rgb) / 0.05);
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: hub-breathe 8s ease-in-out infinite alternate;
   }
 
-  .project-art-02 .project-art-orbit {
-    border-color: #87adf655;
-    transform: rotate(38deg);
+  .hub-ring {
+    fill: #141218;
+    stroke: rgb(var(--accent-purple-rgb) / 0.4);
+    stroke-width: 1;
+    stroke-dasharray: 3 8;
   }
 
-  .project-art-03 {
-    background:
-      radial-gradient(ellipse at 35% 60%, #75426855, transparent 58%),
-      linear-gradient(145deg, #251a25, #111112 70%);
+  .hub-core {
+    fill: #1d1827;
+    stroke: rgb(var(--accent-purple-rgb) / 0.53);
+    stroke-width: 1;
   }
 
-  .project-art-03 .project-art-orbit {
-    border-color: #e2a0d055;
-    transform: rotate(16deg);
+  .hub-mark {
+    fill: var(--accent-purple);
+    font-family: monospace;
+    font-size: 18px;
+    font-weight: 600;
   }
 
-  .project-art-04 {
-    background:
-      radial-gradient(ellipse at 55% 48%, #4c704755, transparent 58%),
-      linear-gradient(145deg, #1b241f, #111112 70%);
+  .network-point {
+    fill: var(--accent-purple);
+    filter: drop-shadow(0 0 5px var(--accent-purple));
+    animation: point-pulse 4s ease-in-out infinite;
   }
 
-  .project-art-04 .project-art-orbit {
-    border-color: #a6d49c55;
-    transform: rotate(-52deg);
+  .network-point-delay {
+    animation-delay: -2s;
   }
 
-  .project-status {
-    display: grid;
-    width: 42px;
-    height: 42px;
-    flex: 0 0 auto;
-    place-items: center;
-    border: 1px solid #ffffff1a;
+  .work-copy {
+    order: 1;
+    min-width: 0;
+    text-align: left;
+  }
+
+  .work-title {
+    margin-bottom: 16px;
+    color: var(--white);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 600;
+    letter-spacing: -0.065em;
+    line-height: 1.1;
+  }
+
+  .section-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 28px;
+    padding: 12px 18px;
+    border: 1px solid rgb(var(--accent-purple-rgb) / 0.33);
     border-radius: 12px;
-    color: var(--white-icon);
+    color: var(--white);
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease;
+  }
+
+  .section-link:hover {
+    border-color: rgb(var(--accent-purple-rgb) / 0.6);
+    background: rgb(var(--accent-purple-rgb) / 0.09);
+  }
+
+  @media (max-width: 767px) {
+    .work-preview {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    .work-art {
+      order: 1;
+      max-height: 340px;
+    }
+
+    .work-copy {
+      order: 2;
+      text-align: left;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .project-art,
-    .project-art-orbit {
+    .section-link,
+    .network-flow,
+    .hub-glow,
+    .network-point {
       transition: none;
+      animation: none;
+    }
+  }
+
+  @keyframes network-flow {
+    to {
+      stroke-dashoffset: -104;
+    }
+  }
+
+  @keyframes hub-breathe {
+    to {
+      transform: scale(1.13);
+      opacity: 0.45;
+    }
+  }
+
+  @keyframes point-pulse {
+    50% {
+      opacity: 0.38;
     }
   }
 </style>

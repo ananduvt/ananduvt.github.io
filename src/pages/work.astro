@@ -1,0 +1,123 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/nav.astro";
+import LogoWall from "@/components/logoWall.astro";
+---
+
+<Layout title="Work | Anandu V T">
+  <Nav />
+  <main class="detail-page">
+    <a class="back-link" href="/#work">← Back to home</a>
+    <header class="detail-hero">
+      <p class="eyebrow">The work side</p>
+      <h1>Building useful things with technology.</h1>
+      <p>
+        I’m an engineer drawn to software, electrical projects, and creative
+        problem-solving. This is where I’ll share my work, experience, and the
+        tools I use.
+      </p>
+    </header>
+
+    <section class="detail-section" aria-labelledby="toolbox-heading">
+      <p class="eyebrow">A few familiar tools</p>
+      <h2 id="toolbox-heading">My toolbox</h2>
+      <div class="toolbox">
+        <LogoWall />
+      </div>
+    </section>
+
+    <section class="detail-section" aria-labelledby="experience-heading">
+      <p class="eyebrow">More to come</p>
+      <h2 id="experience-heading">Experience & selected work</h2>
+      <p>
+        I’m putting together a fuller overview of my experience and projects.
+        Check back soon for the details.
+      </p>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .detail-page {
+    width: min(100%, 960px);
+    margin: 0 auto;
+    padding: 120px 0 72px;
+    color: var(--white);
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 48px;
+    color: var(--white-icon);
+    font-size: 14px;
+    transition: color 180ms ease;
+  }
+
+  .back-link:hover {
+    color: var(--white);
+  }
+
+  .detail-hero {
+    max-width: 760px;
+    padding: 0 0 72px;
+  }
+
+  .eyebrow {
+    margin-bottom: 12px;
+    color: var(--sec);
+    font-size: 15px;
+  }
+
+  h1 {
+    max-width: 720px;
+    margin-bottom: 20px;
+    font-size: clamp(42px, 7vw, 72px);
+    font-weight: 600;
+    letter-spacing: -0.07em;
+    line-height: 1.05;
+  }
+
+  h2 {
+    margin-bottom: 16px;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 500;
+    letter-spacing: -0.05em;
+  }
+
+  .detail-hero > p:last-child,
+  .detail-section > p:last-child {
+    max-width: 680px;
+    color: var(--white-icon);
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .detail-section {
+    padding: 40px 0;
+    border-top: 1px solid #ffffff10;
+  }
+
+  .toolbox {
+    margin-top: 24px;
+    overflow: hidden;
+    border: 1px solid #ffffff12;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #171619, #111112 70%);
+  }
+
+  @media (max-width: 767px) {
+    .detail-page {
+      padding-top: 92px;
+    }
+
+    .detail-hero {
+      padding-bottom: 48px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .back-link {
+      transition: none;
+    }
+  }
+</style>

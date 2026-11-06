@@ -1,0 +1,251 @@
+<section id="personal" class="min-h-[100svh] flex items-center py-12 border-t border-[#ffffff10] text-[var(--white)]">
+  <div class="personal-content max-w-7xl w-full mx-auto px-6">
+    <div class="personal-preview">
+      <div class="personal-art" aria-hidden="true">
+        <svg viewBox="0 0 480 360" role="presentation">
+          <circle class="personal-orbit personal-orbit-one" cx="240" cy="180" r="118" />
+          <circle class="personal-orbit personal-orbit-two" cx="240" cy="180" r="84" />
+          <path class="personal-connector" d="M118 110 194 160M362 106 286 158M118 250 194 200M362 254 286 202" />
+
+          <rect class="personal-card personal-card-one" x="30" y="72" width="124" height="70" rx="14" />
+          <text class="personal-label" x="92" y="114" text-anchor="middle">BUILD</text>
+          <rect class="personal-card personal-card-two" x="326" y="68" width="124" height="70" rx="14" />
+          <text class="personal-label" x="388" y="110" text-anchor="middle">EXPLORE</text>
+          <rect class="personal-card personal-card-three" x="30" y="218" width="124" height="70" rx="14" />
+          <text class="personal-label" x="92" y="260" text-anchor="middle">LEARN</text>
+          <rect class="personal-card personal-card-four" x="326" y="222" width="124" height="70" rx="14" />
+          <text class="personal-label" x="388" y="264" text-anchor="middle">REPEAT</text>
+
+          <circle class="personal-core-glow" cx="240" cy="180" r="62" />
+          <circle class="personal-core" cx="240" cy="180" r="43" />
+          <text class="personal-core-mark" x="240" y="191" text-anchor="middle">✳</text>
+          <circle class="personal-spark personal-spark-one" cx="240" cy="62" r="4" />
+          <circle class="personal-spark personal-spark-two" cx="324" cy="180" r="4" />
+        </svg>
+      </div>
+
+      <div class="personal-copy">
+        <p class="text-lg text-[var(--sec)] mb-2 shiny-sec">Beyond the day job</p>
+        <h2 class="personal-title">Personal</h2>
+        <p class="max-w-2xl text-[var(--white-icon)] leading-relaxed">
+          The side projects, experiments, and curiosities that keep me making
+          things.
+        </p>
+        <a class="section-link" href="/personal/">
+          A little more about me <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .personal-preview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: clamp(32px, 6vw, 80px);
+  }
+
+  .personal-art {
+    order: 2;
+    position: relative;
+    display: grid;
+    min-width: 0;
+    aspect-ratio: 1.2;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid #ffffff12;
+    border-radius: 20px;
+    background:
+      radial-gradient(ellipse at 50% 50%, rgb(var(--accent-purple-rgb) / 0.08), transparent 54%),
+      linear-gradient(145deg, #19171e, #111112 70%);
+  }
+
+  .personal-art::before {
+    position: absolute;
+    content: "";
+    background-image:
+      radial-gradient(#ffffff25 1px, transparent 1px);
+    background-size: 24px 24px;
+    inset: 0;
+    mask-image: radial-gradient(ellipse at center, #000 10%, transparent 76%);
+  }
+
+  .personal-art svg {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  .personal-orbit {
+    fill: none;
+    stroke: rgb(var(--accent-purple-rgb) / 0.17);
+    stroke-width: 1;
+    stroke-dasharray: 2 9;
+    transform-box: view-box;
+    transform-origin: center;
+  }
+
+  .personal-orbit-one {
+    animation: personal-orbit 55s linear infinite;
+  }
+
+  .personal-orbit-two {
+    stroke: #dfdfdf18;
+    stroke-dasharray: 1 11;
+    animation: personal-orbit-reverse 72s linear infinite;
+  }
+
+  .personal-connector {
+    fill: none;
+    stroke: rgb(var(--accent-purple-rgb) / 0.33);
+    stroke-width: 1;
+    stroke-dasharray: 3 7;
+    animation: personal-flow 24s linear infinite;
+  }
+
+  .personal-card {
+    fill: #17151d;
+    stroke: rgb(var(--accent-purple-rgb) / 0.33);
+    stroke-width: 1;
+  }
+
+  .personal-card-two {
+    stroke: #8c9fc755;
+  }
+
+  .personal-card-three {
+    stroke: rgb(var(--accent-amber-rgb) / 0.33);
+  }
+
+  .personal-card-four {
+    stroke: #8eaf8a55;
+  }
+
+  .personal-label {
+    fill: #dfdfdf99;
+    font-family: "Montserrat Variable", sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.7px;
+  }
+
+  .personal-core-glow {
+    fill: rgb(var(--accent-purple-rgb) / 0.06);
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: personal-breathe 7s ease-in-out infinite alternate;
+  }
+
+  .personal-core {
+    fill: #1d1827;
+    stroke: rgb(var(--accent-purple-rgb) / 0.53);
+    stroke-width: 1;
+  }
+
+  .personal-core-mark {
+    fill: var(--accent-purple);
+    font-size: 30px;
+  }
+
+  .personal-spark {
+    fill: var(--accent-purple);
+    filter: drop-shadow(0 0 5px var(--accent-purple));
+    transform-box: view-box;
+    transform-origin: 240px 180px;
+    animation: personal-orbit 11s linear infinite;
+  }
+
+  .personal-spark-two {
+    animation-direction: reverse;
+    animation-duration: 15s;
+  }
+
+  .personal-copy {
+    order: 1;
+    min-width: 0;
+    text-align: left;
+  }
+
+  .personal-title {
+    margin-bottom: 16px;
+    color: var(--white);
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 600;
+    letter-spacing: -0.065em;
+    line-height: 1.1;
+  }
+
+  .section-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 28px;
+    padding: 12px 18px;
+    border: 1px solid rgb(var(--accent-purple-rgb) / 0.33);
+    border-radius: 12px;
+    color: var(--white);
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease;
+  }
+
+  .section-link:hover {
+    border-color: rgb(var(--accent-purple-rgb) / 0.6);
+    background: rgb(var(--accent-purple-rgb) / 0.09);
+  }
+
+  @media (max-width: 767px) {
+    .personal-preview {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    .personal-art {
+      order: 1;
+      max-height: 340px;
+    }
+
+    .personal-copy {
+      order: 2;
+      text-align: left;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .section-link,
+    .personal-orbit,
+    .personal-connector,
+    .personal-core-glow,
+    .personal-spark {
+      transition: none;
+      animation: none;
+    }
+  }
+
+  @keyframes personal-orbit {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes personal-orbit-reverse {
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+
+  @keyframes personal-flow {
+    to {
+      stroke-dashoffset: -40;
+    }
+  }
+
+  @keyframes personal-breathe {
+    to {
+      transform: scale(1.16);
+      opacity: 0.45;
+    }
+  }
+</style>

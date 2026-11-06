@@ -1,20 +1,40 @@
 ---
-import LetterGlitch from "../React/LetterGlitch.tsx";
-import SkillsList from "../React/SkillsList.tsx";
-import LogoWall from "../components/logoWall.astro";
+import SideRays from "../React/SideRays.jsx";
+import portrait from "../images/Anandu-casual-photo.jpg";
 ---
 
-<section class="text-[var(--white)] mt-12 md:mt-0" id="home">
-  <div class="max-w-7xl mx-auto space-y-8 md:py-36 pb-14">
+<section class="text-[var(--white)] min-h-[100svh] flex items-center" id="home">
+  <div class="home-rays" aria-hidden="true">
+    <SideRays
+      client:load
+      rayColor1="#884cff"
+      rayColor2="#dd7010"
+      blend={0.4}
+      origin="top-left"
+      speed={0.45}
+      intensity={4.4}
+      spread={2}
+      density={5}
+      sharpness={0.8}
+      glow={0.25}
+      saturation={0.9}
+      dust={0}
+      followMouse={true}
+      intro={true}
+      opacity={1}
+      maxDevicePixelRatio={1.5}
+    />
+  </div>
+  <div class="max-w-7xl w-full mx-auto space-y-8 px-6 md:py-36 pb-14">
     <div class="identity-grid">
       <div class="portrait-panel">
         <div class="portrait-placeholder">
           <img
             class="portrait-photo"
-            src="/images/anandu-casual-photo.jpg"
+            src={portrait.src}
             alt="Anandu V T"
-            width="1733"
-            height="2560"
+            width={portrait.width}
+            height={portrait.height}
             fetchpriority="high"
           />
         </div>
@@ -22,6 +42,7 @@ import LogoWall from "../components/logoWall.astro";
 
       <div class="identity-copy">
         <h1 class="identity-name">Anandu</h1>
+        <h1 class="identity-name">Thulaseedharan</h1>
         <p class="identity-titles">Engineer <span>·</span> Tinkerer <span>·</span> Automator</p>
         <p class="identity-description">
           My virtual workbench for all the things I build.<br />
@@ -33,33 +54,37 @@ import LogoWall from "../components/logoWall.astro";
         </p>
       </div>
     </div>
-
-    <div>
-      <p class="text-sm text-[var(--white-icon)] text-center">
-        A few of the tools behind this site
-      </p>
-      <LogoWall />
-    </div>
-
-    <div class="flex flex-col lg:flex-row items-center gap-8">
-      <SkillsList client:load />
-      <div class="flex justify-center md:w-full md:h-[292px] size-[290px] pt-3 md:pt-9 md:ml-16">
-        <LetterGlitch
-          client:load
-          glitchColors={["#5e4491", "#A476FF", "#241a38"]}
-          glitchSpeed={33}
-          centerVignette={false}
-          outerVignette={true}
-          smooth={true}
-        />
-      </div>
-    </div>
   </div>
 </section>
 
 <style is:global>
+  #home {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .home-rays {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    inset: 0;
+  }
+
+  .home-rays .side-rays {
+    position: absolute;
+    inset: 0;
+    opacity: 0.9;
+    mask-image: linear-gradient(to bottom, #000 0%, #000 68%, transparent 100%);
+  }
+
+  #home > .max-w-7xl {
+    position: relative;
+    z-index: 1;
+  }
+
   .shiny-sec {
-    background: linear-gradient(135deg, #a476ff 25%, #eee5ff 50%, #a476ff 75%);
+    background: linear-gradient(135deg, var(--accent-purple) 25%, #eee5ff 50%, var(--accent-purple) 75%);
     background-size: 400% 100%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -71,8 +96,12 @@ import LogoWall from "../components/logoWall.astro";
     display: grid;
     min-height: 490px;
     align-items: stretch;
-    grid-template-columns: 0.7fr 1.3fr;
+    grid-template-columns: 1.3fr 0.7fr;
     gap: 48px;
+  }
+
+  .portrait-panel {
+    grid-column: 2;
   }
 
   .portrait-panel {
@@ -83,26 +112,42 @@ import LogoWall from "../components/logoWall.astro";
     justify-content: center;
     overflow: hidden;
     border-radius: 18px;
-    background:
-      radial-gradient(ellipse at 50% 46%, #5e449155 0, transparent 48%),
-      linear-gradient(145deg, #19171e, #101010 72%);
+    background: transparent;
   }
 
   .portrait-panel::before {
     position: absolute;
+    inset: 20% 5%;
+    z-index: 0;
+    border: 1px solid rgb(var(--accent-amber-rgb) / 0.5);
     border-radius: 50%;
     content: "";
-    inset: 9%;
+    pointer-events: none;
+    transform: rotate(-24deg);
+    animation: portrait-orbit-forward 78s linear infinite;
+  }
+
+  .portrait-panel::after {
+    position: absolute;
+    inset: 29% 0;
+    z-index: 0;
+    border: 1px solid #dfdfdf14;
+    border-radius: 50%;
+    content: "";
+    pointer-events: none;
+    transform: rotate(32deg);
+    animation: portrait-orbit-reverse 105s linear infinite;
   }
 
   .portrait-placeholder {
     position: relative;
+    z-index: 1;
     width: min(70%, 310px);
     aspect-ratio: 1;
     overflow: hidden;
     border-radius: 14px;
     background: #101012;
-    box-shadow: 0 18px 70px #0008, inset 0 0 45px #a476ff0e;
+    box-shadow: 0 18px 70px #0008, inset 0 0 45px rgb(var(--accent-purple-rgb) / 0.06);
   }
 
   .portrait-photo {
@@ -112,15 +157,28 @@ import LogoWall from "../components/logoWall.astro";
     inset: 0;
     object-fit: cover;
     object-position: 50% 25%;
-    transform: scaleX(-1);
+  }
+
+  @keyframes portrait-orbit-forward {
+    to {
+      transform: rotate(336deg);
+    }
+  }
+
+  @keyframes portrait-orbit-reverse {
+    to {
+      transform: rotate(-328deg);
+    }
   }
 
   .identity-copy {
+    grid-column: 1;
+    grid-row: 1;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: center;
-    text-align: right;
+    text-align: left;
   }
 
   .identity-eyebrow {
@@ -173,10 +231,14 @@ import LogoWall from "../components/logoWall.astro";
     }
 
     .portrait-panel {
+      grid-column: 1;
+      grid-row: 1;
       min-height: 390px;
     }
 
     .identity-copy {
+      grid-column: 1;
+      grid-row: 2;
       align-items: flex-start;
       text-align: left;
     }
@@ -187,10 +249,18 @@ import LogoWall from "../components/logoWall.astro";
 
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .portrait-panel::before,
+    .portrait-panel::after {
+      animation: none;
+    }
+  }
+
   @keyframes shine {
     0% {
       background-position: 100% 50%;
     }
+
     30%,
     70% {
       background-position: 0% 50%;

@@ -1,0 +1,155 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/nav.astro";
+---
+
+<Layout title="Personal | Anandu V T">
+  <Nav />
+  <main class="detail-page">
+    <a class="back-link" href="/#personal">← Back to home</a>
+    <header class="detail-hero">
+      <p class="eyebrow">Beyond the day job</p>
+      <h1>A place for the things I make and explore.</h1>
+      <p>
+        I like getting curious, trying things out, and figuring out how they
+        work. This is a home for the side projects and personal interests I
+        want to share along the way.
+      </p>
+    </header>
+
+    <section class="personal-grid" aria-label="Personal interests">
+      <article class="interest-card interest-card-software">
+        <span class="interest-number">01</span>
+        <p class="eyebrow">Side projects</p>
+        <h2>Software experiments</h2>
+        <p>
+          Small ideas, useful tools, and the occasional project that grows
+          bigger than planned.
+        </p>
+      </article>
+      <article class="interest-card interest-card-electrical">
+        <span class="interest-number">02</span>
+        <p class="eyebrow">Hands-on making</p>
+        <h2>Software & electrical builds</h2>
+        <p>
+          A space for the things I’m building, tinkering with, and inevitably
+          rebuilding.
+        </p>
+      </article>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .detail-page {
+    width: min(100%, 960px);
+    margin: 0 auto;
+    padding: 120px 0 72px;
+    color: var(--white);
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 48px;
+    color: var(--white-icon);
+    font-size: 14px;
+    transition: color 180ms ease;
+  }
+
+  .back-link:hover {
+    color: var(--white);
+  }
+
+  .detail-hero {
+    max-width: 760px;
+    padding: 0 0 56px;
+  }
+
+  .eyebrow {
+    margin-bottom: 12px;
+    color: var(--sec);
+    font-size: 15px;
+  }
+
+  h1 {
+    max-width: 720px;
+    margin-bottom: 20px;
+    font-size: clamp(42px, 7vw, 72px);
+    font-weight: 600;
+    letter-spacing: -0.07em;
+    line-height: 1.05;
+  }
+
+  .detail-hero > p:last-child,
+  .interest-card > p:last-child {
+    color: var(--white-icon);
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .personal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .interest-card {
+    position: relative;
+    min-height: 260px;
+    padding: 32px;
+    overflow: hidden;
+    border: 1px solid #ffffff12;
+    border-radius: 18px;
+    background:
+      radial-gradient(ellipse at 85% 15%, rgb(var(--accent-purple-rgb) / 0.15), transparent 48%),
+      linear-gradient(145deg, #19171e, #111112 72%);
+  }
+
+  .interest-card-electrical {
+    background:
+      radial-gradient(ellipse at 85% 15%, #6793d42b, transparent 48%),
+      linear-gradient(145deg, #171a20, #111112 72%);
+  }
+
+  .interest-number {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    color: #ffffff20;
+    font-size: 52px;
+    font-weight: 500;
+    letter-spacing: -0.08em;
+  }
+
+  .interest-card .eyebrow {
+    margin-top: 44px;
+  }
+
+  h2 {
+    margin-bottom: 12px;
+    font-size: clamp(23px, 3vw, 30px);
+    font-weight: 500;
+    letter-spacing: -0.05em;
+  }
+
+  @media (max-width: 767px) {
+    .detail-page {
+      padding-top: 92px;
+    }
+
+    .personal-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .interest-card {
+      min-height: 230px;
+      padding: 26px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .back-link {
+      transition: none;
+    }
+  }
+</style>
